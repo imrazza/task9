@@ -1,0 +1,38 @@
+Common Dockerfile Instructions
+
+FROM
+Specifies the base image. All subsequent layers are built on top of this image.
+Example: FROM node:18-alpine
+
+WORKDIR
+Sets the working directory inside the container. All following commands run relative to this path.
+Example: WORKDIR /app
+
+COPY / ADD
+Copies files from the host machine into the container filesystem.
+Example: COPY app.js .
+
+RUN
+Executes commands during image build time (e.g., installing packages). Each RUN creates a new image layer.
+
+EXPOSE
+Documents the port the application listens on. It does not publish the port automatically.
+Example: EXPOSE 3000
+
+CMD / ENTRYPOINT
+Defines the default command that runs when a container starts.
+Example: CMD ["node", "app.js"]
+
+Docker Image Lifecycle (Summary)
+
+1. Dockerfile written – defines image instructions
+
+2. Image built – using docker build
+
+3. Container created – using docker run
+
+4. Application running – inside container
+
+5. Container stopped & removed
+
+6. Image removed – cleanup completed
